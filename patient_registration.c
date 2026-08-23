@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-void patient_registration(char name[], int size, int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID, int *daysAdmitted){
-    printf("---Patient Registration---\n");
+void patient_registration(char name[], int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID, int *daysAdmitted){
+    printf("\n---Patient Registration---\n");
 
     printf("1 - Patient Details Collection\n");
     printf("Enter patient name: ");
@@ -19,13 +19,14 @@ void patient_registration(char name[], int size, int *age, int *triageLevel, int
     printf("\n3 - Ward Admission Details\n");
     printf("Is admitted to ward? (1 = Yes, 0 = No): ");
     scanf("%d", admitted);
-    if (admitted == 0){
+    if (*admitted == 1){
         printf("Enter ward ID (1 to 4): ");
         scanf("%d", wardID);
         printf("Enter days admitted: ");
         scanf("%d", daysAdmitted);
     }
-    else if(admitted == 1){
-        daysAdmitted = 0;
+    else if(*admitted == 0){
+        *daysAdmitted = 0;
+        *wardID = 0;
     }
 }
