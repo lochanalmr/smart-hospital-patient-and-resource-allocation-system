@@ -1,3 +1,5 @@
+#include "data_arrays.h"
+
 // Doctor specialties data
 const char *specialtyNames[] = {
     "General Practice (OPD)",
