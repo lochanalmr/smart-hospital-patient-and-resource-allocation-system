@@ -7,7 +7,7 @@
 #define CAPACITY 45
 
 int main(){
-    printf("Smart Hospital Patient and Resource Allocation System\n");
+    printf("🏥 Smart Hospital Patient and Resource Allocation System\n");
 
     char names[CAPACITY][SIZE];
     int ages[CAPACITY] = {0};
@@ -16,10 +16,12 @@ int main(){
     int admittedStatus[CAPACITY] = {0};
     int wardIDs[CAPACITY] = {0};
     int daysAdmitted[CAPACITY] = {0};
+    int countPerSpecialty[4] = {0};
+    int waitTimesArray[CAPACITY] = {0};
+    float surchargesArray[CAPACITY] = {0.0};
 
     int patientCount = 0;
     int choice = 0;
-    int countPerSpecialty[4] = {0};
 
     do{
         printf("\nMain Menu: \n");
@@ -28,6 +30,7 @@ int main(){
         printf("3: Exit Program\n");
         printf("Enter Choice: ");
         scanf("%d", &choice);
+
         if (choice == 1 && patientCount <= CAPACITY){
             patient_registration(
                 names[patientCount], 
@@ -40,15 +43,20 @@ int main(){
                 countPerSpecialty,
                 patientCount,
                 specialtyIDs,
-                wardIDs
+                wardIDs,
+                &waitTimesArray[patientCount],
+                &surchargesArray[patientCount]
             );
             patientCount++;
             printf("Patient successfully registered!\n");
         }
+
         else if(choice == 2){
-            printf("View Bill of a Patient");
+            printf("View Bill of a Patient\n");
         }
+
         else if(choice == 3){
+            printf("\nThank you for using Smart Hospital Patient and Resource Allocation System!\n");
             return 0;
         }
     } while (choice != 0);

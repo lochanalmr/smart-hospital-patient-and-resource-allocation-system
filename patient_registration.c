@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include "patient_registration.h"
+#include "calculations.h"
 
-int estimatedWaitingTimeCalculator(int patientNo, int specialtyIDs[], int wardIDs[], int countPerSpecialty[]);
-
-void patient_registration(char name[], int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID, int *daysAdmitted, int countPerSpecialty[], int patientCount, int specialtyIDs[], int wardIDs[]){
+void patient_registration(char name[], int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID, int *daysAdmitted, int countPerSpecialty[], int patientCount, int specialtyIDs[], int wardIDs[], int *waitTime, float *surcharge){
     printf("\n---Patient Registration---\n");
 
     printf("1 - Patient Details Collection\n");
@@ -38,5 +37,8 @@ void patient_registration(char name[], int *age, int *triageLevel, int *specialt
         }
     }
     
-    int test1 = estimatedWaitingTimeCalculator(patientCount, specialtyIDs, wardIDs, countPerSpecialty);
+    *waitTime = calculate_estimated_waiting_time(patientCount, specialtyIDs, wardIDs, countPerSpecialty);
+    *surcharge = calculate_emergency_surcharge(*triageLevel, *specialtyID);
+    printf("%d\n", *waitTime);
+    printf("%.2f\n", *surcharge);
 }
