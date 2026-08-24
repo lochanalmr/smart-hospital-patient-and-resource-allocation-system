@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
+#include "data_arrays.h"
+#include "patient_registration.h"
 
 #define SIZE 50
 #define CAPACITY 45
 
-void patient_registration(char name[], int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID, int *daysAdmitted);
-
 int main(){
     printf("Smart Hospital Patient and Resource Allocation System\n");
 
-    // Arrays for storing patient registration data
     char names[CAPACITY][SIZE];
     int ages[CAPACITY] = {0};
     int triageLevels[CAPACITY] = {0};
@@ -21,11 +19,13 @@ int main(){
 
     int patientCount = 0;
     int choice = 0;
+    int countPerSpecialty[4] = {0};
 
     do{
         printf("\nMain Menu: \n");
         printf("1. Register Patient\n");
-        printf("2: Exit Program\n");
+        printf("2. View Bill of a Patient\n");
+        printf("3: Exit Program\n");
         printf("Enter Choice: ");
         scanf("%d", &choice);
         if (choice == 1 && patientCount <= CAPACITY){
@@ -36,10 +36,19 @@ int main(){
                 &specialtyIDs[patientCount], 
                 &admittedStatus[patientCount], 
                 &wardIDs[patientCount], 
-                &daysAdmitted[patientCount]);
+                &daysAdmitted[patientCount],
+                countPerSpecialty,
+                patientCount,
+                specialtyIDs,
+                wardIDs
+            );
             patientCount++;
+            printf("Patient successfully registered!\n");
         }
         else if(choice == 2){
+            printf("View Bill of a Patient");
+        }
+        else if(choice == 3){
             return 0;
         }
     } while (choice != 0);
