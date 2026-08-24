@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <string.h>
+#include "patient_registration.h"
 
-void patient_registration(char name[], int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID, int *daysAdmitted){
+int estimatedWaitingTimeCalculator(int patientNo, int specialtyIDs[], int wardIDs[], int countPerSpecialty[]);
+
+void patient_registration(char name[], int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID, int *daysAdmitted, int countPerSpecialty[], int patientCount, int specialtyIDs[], int wardIDs[]){
     printf("\n---Patient Registration---\n");
 
     printf("1 - Patient Details Collection\n");
@@ -29,4 +32,11 @@ void patient_registration(char name[], int *age, int *triageLevel, int *specialt
         *daysAdmitted = 0;
         *wardID = 0;
     }
+    for (int i = 0; i < 4; i++){
+        if (i == *specialtyID){
+            countPerSpecialty[i] += 1;
+        }
+    }
+    
+    int test1 = estimatedWaitingTimeCalculator(patientCount, specialtyIDs, wardIDs, countPerSpecialty);
 }
