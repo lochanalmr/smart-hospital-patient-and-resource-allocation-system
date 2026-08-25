@@ -34,3 +34,9 @@ int calculate_ward_stay_cost(int wardID, int daysAdmitted){
     totalWardStayCost = daysAdmitted * dailyBedRates[wardID - 1];
     return totalWardStayCost;
 }
+
+float calculate_total_bill(int baseConsultationFee, float surcharge, int wardStayCost){
+    float total_bill_value = 0;
+    total_bill_value = (float) (baseConsultationFee) + surcharge + (float) wardStayCost;
+    return total_bill_value;
+}
