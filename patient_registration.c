@@ -4,7 +4,7 @@
 #include "calculations.h"
 #include "data_arrays.h"
 
-int patient_registration(char name[], int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID, int *daysAdmitted, int countPerSpecialty[], int patientCount, int specialtyIDs[], int wardIDs[], int *waitTime, float *surcharge, int countPerWardID[], int *wardStayCost, float *totalBillValue){
+int patient_registration(char name[], int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID, int *daysAdmitted, int countPerSpecialty[], int patientCount, int specialtyIDs[], int wardIDs[], int *waitTime, float *surcharge, int countPerWardID[], int *wardStayCost, float *totalBillValue, float *ageSubsidyDiscount){
     printf("\n---Patient Registration---\n");
 
     printf("1 - Patient Details Collection\n");
@@ -63,6 +63,6 @@ int patient_registration(char name[], int *age, int *triageLevel, int *specialty
     *surcharge = calculate_emergency_surcharge(*triageLevel, *specialtyID);
     *wardStayCost = calculate_ward_stay_cost(*wardID, *daysAdmitted);
     *totalBillValue = calculate_total_bill(baseConsultationFees[*specialtyID - 1], *surcharge, *wardStayCost);
-    printf("Total bill is %.2f\n", *totalBillValue);
+    *ageSubsidyDiscount = calculate_age_subsidy_discount(*age, *totalBillValue);
     return 0;
 }
