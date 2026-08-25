@@ -63,6 +63,5 @@ int patient_registration(char name[], int *age, int *triageLevel, int *specialty
     *surcharge = calculate_emergency_surcharge(*triageLevel, *specialtyID);
     *wardStayCost = calculate_ward_stay_cost(*wardID, *daysAdmitted);
     *totalBillValue = calculate_total_bill(baseConsultationFees[*specialtyID - 1], *surcharge, *wardStayCost);
-    printf("Total bill is %.2f\n", *totalBillValue);
     return 0;
 }
