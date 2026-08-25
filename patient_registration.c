@@ -4,7 +4,7 @@
 #include "calculations.h"
 #include "data_arrays.h"
 
-int patient_registration(char name[], int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID, int *daysAdmitted, int countPerSpecialty[], int patientCount, int specialtyIDs[], int wardIDs[], int *waitTime, float *surcharge, int countPerWardID[], int *wardStayCost, float *totalBillValue, float *ageSubsidyDiscount){
+int patient_registration(char name[], int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID, int *daysAdmitted, int countPerSpecialty[], int patientCount, int specialtyIDs[], int wardIDs[], int *waitTime, float *surcharge, int countPerWardID[], int *wardStayCost, float *totalBillValue, float *ageSubsidyDiscount, float *finalAmountPayable, int *patientNoArray){
     printf("\n---Patient Registration---\n");
 
     printf("1 - Patient Details Collection\n");
@@ -64,5 +64,7 @@ int patient_registration(char name[], int *age, int *triageLevel, int *specialty
     *wardStayCost = calculate_ward_stay_cost(*wardID, *daysAdmitted);
     *totalBillValue = calculate_total_bill(baseConsultationFees[*specialtyID - 1], *surcharge, *wardStayCost);
     *ageSubsidyDiscount = calculate_age_subsidy_discount(*age, *totalBillValue);
+    *finalAmountPayable = *totalBillValue - *ageSubsidyDiscount;
+    *patientNoArray = patientCount;
     return 0;
 }
