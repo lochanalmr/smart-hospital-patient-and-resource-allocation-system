@@ -4,10 +4,10 @@
 #include "patient_registration.h"
 
 #define SIZE 50
-#define CAPACITY 45
+#define CAPACITY 1000
 
 int main(){
-    printf("🏥 Smart Hospital Patient and Resource Allocation System\n");
+    printf("Smart Hospital Patient and Resource Allocation System\n");
 
     char names[CAPACITY][SIZE];
     int ages[CAPACITY] = {0};
@@ -19,6 +19,8 @@ int main(){
     int countPerSpecialty[4] = {0};
     int waitTimesArray[CAPACITY] = {0};
     float surchargesArray[CAPACITY] = {0.0};
+    int countPerWardID[CAPACITY] = {0};
+    int wardStayCosts[CAPACITY] = {0};
 
     int patientCount = 0;
     int choice = 0;
@@ -31,8 +33,10 @@ int main(){
         printf("Enter Choice: ");
         scanf("%d", &choice);
 
+        int registrationStatus = 0;
+
         if (choice == 1 && patientCount <= CAPACITY){
-            patient_registration(
+            registrationStatus = patient_registration(
                 names[patientCount], 
                 &ages[patientCount], 
                 &triageLevels[patientCount], 
@@ -45,10 +49,14 @@ int main(){
                 specialtyIDs,
                 wardIDs,
                 &waitTimesArray[patientCount],
-                &surchargesArray[patientCount]
+                &surchargesArray[patientCount],
+                countPerWardID,
+                &wardStayCosts[patientCount]
             );
-            patientCount++;
-            printf("Patient successfully registered!\n");
+            if (registrationStatus == 0){
+                printf("Patient %d successfully registered!\n", patientCount);
+                patientCount++;
+            }
         }
 
         else if(choice == 2){

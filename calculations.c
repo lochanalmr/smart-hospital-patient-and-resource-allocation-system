@@ -9,8 +9,8 @@ int calculate_estimated_waiting_time(int patientCount, int specialtyIDs[], int w
     int specialtyOfPatient = 0;
 
     specialtyOfPatient = specialtyIDs[patientCount];
-    peopleBeforePatient = countPerSpecialty[specialtyOfPatient] - 1;
-    waitTime = peopleBeforePatient * consultationTimesPerPatient[specialtyOfPatient];
+    peopleBeforePatient = countPerSpecialty[specialtyOfPatient - 1] - 1;
+    waitTime = peopleBeforePatient * consultationTimesPerPatient[specialtyOfPatient - 1];
 
     return waitTime;
 }
@@ -29,6 +29,8 @@ float calculate_emergency_surcharge(int triageLevel, int specialtyID){
     return surcharge;
 }
 
-float calculate_ward_stay_cost(int wardID, int daysAdmitted){
-    //
+int calculate_ward_stay_cost(int wardID, int daysAdmitted){
+    int totalWardStayCost = 0;
+    totalWardStayCost = daysAdmitted * dailyBedRates[wardID - 1];
+    return totalWardStayCost;
 }
