@@ -22,6 +22,7 @@ int main(){
     int countPerWardID[CAPACITY] = {0};
     int wardStayCosts[CAPACITY] = {0};
     float totalBillValues[CAPACITY] = {0};
+    float ageSubsidyDiscounts[CAPACITY] = {0};
 
     int patientCount = 0;
     int choice = 0;
@@ -53,7 +54,8 @@ int main(){
                 &surchargesArray[patientCount],
                 countPerWardID,
                 &wardStayCosts[patientCount],
-                &totalBillValues[patientCount]
+                &totalBillValues[patientCount],
+                &ageSubsidyDiscounts[patientCount]
             );
             if (registrationStatus == 0){
                 printf("Patient %d successfully registered!\n", patientCount);
