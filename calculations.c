@@ -1,9 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "data_arrays.h"
 #include "calculations.h"
 
-int calculate_estimated_waiting_time(int patientCount, int specialtyIDs[], int wardIDs[], int countPerSpecialty[]){
+int calculateEstimatedWaitingTime(int patientCount, int specialtyIDs[], int wardIDs[], int countPerSpecialty[]){
     int waitTime = 0;
     int peopleBeforePatient = 0;
     int specialtyOfPatient = 0;
@@ -15,7 +13,7 @@ int calculate_estimated_waiting_time(int patientCount, int specialtyIDs[], int w
     return waitTime;
 }
 
-float calculate_emergency_surcharge(int triageLevel, int specialtyID){
+float calculateEmergencySurcharge(int triageLevel, int specialtyID){
     float surcharge = 0;
     if (triageLevel == 1){
         surcharge = 0;
@@ -29,19 +27,19 @@ float calculate_emergency_surcharge(int triageLevel, int specialtyID){
     return surcharge;
 }
 
-int calculate_ward_stay_cost(int wardID, int daysAdmitted){
+int calculateWardStayCost(int wardID, int daysAdmitted){
     int totalWardStayCost = 0;
     totalWardStayCost = daysAdmitted * dailyBedRates[wardID - 1];
     return totalWardStayCost;
 }
 
-float calculate_total_bill(int baseConsultationFee, float surcharge, int wardStayCost){
+float calculateTotalBill(int baseConsultationFee, float surcharge, int wardStayCost){
     float total_bill_value = 0;
     total_bill_value = (float) (baseConsultationFee) + surcharge + (float) wardStayCost;
     return total_bill_value;
 }
 
-float calculate_age_subsidy_discount(int age, int totalBillValue){
+float calculateAgeSubsidyDiscount(int age, int totalBillValue){
     float ageSubsidyDiscount = 0;
     int discountRate = 0;
     if (age < 0 || age > 65){

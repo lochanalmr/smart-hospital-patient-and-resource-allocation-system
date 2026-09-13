@@ -1,10 +1,10 @@
 #ifndef CALCULATIONS_H_INCLUDED
 #define CALCULATIONS_H_INCLUDED
 
-int calculate_estimated_waiting_time(int patientCount, int specialtyIDs[], int wardIDs[], int countPerSpecialty[]);
-float calculate_emergency_surcharge(int triageLevel, int specialtyID);
-int calculate_ward_stay_cost(int wardID, int daysAdmitted);
-float calculate_total_bill(int baseConsultationFee, float surcharge, int wardStayCost);
-float calculate_age_subsidy_discount(int age, int totalBillValue);
+int calculateEstimatedWaitingTime(int patientCount, int specialtyIDs[], int wardIDs[], int countPerSpecialty[]);
+float calculateEmergencySurcharge(int triageLevel, int specialtyID);
+int calculateWardStayCost(int wardID, int daysAdmitted);
+float calculateTotalBill(int baseConsultationFee, float surcharge, int wardStayCost);
+float calculateAgeSubsidyDiscount(int age, int totalBillValue);
 
 #endif // CALCULATIONS_H_INCLUDED

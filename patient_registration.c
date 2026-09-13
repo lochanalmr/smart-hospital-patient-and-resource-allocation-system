@@ -1,10 +1,9 @@
 #include <stdio.h>
-#include <string.h>
 #include "patient_registration.h"
 #include "calculations.h"
 #include "data_arrays.h"
 
-int patient_registration(char name[], int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID, int *daysAdmitted, int countPerSpecialty[], int patientCount, int specialtyIDs[], int wardIDs[], int *waitTime, float *surcharge, int countPerWardID[], int *wardStayCost, float *totalBillValue, float *ageSubsidyDiscount, float *finalAmountPayable, int *patientNoArray){
+int patientRegistration(char name[], int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID, int *daysAdmitted, int countPerSpecialty[], int patientCount, int specialtyIDs[], int wardIDs[], int *waitTime, float *surcharge, int countPerWardID[], int *wardStayCost, float *totalBillValue, float *ageSubsidyDiscount, float *finalAmountPayable, int *patientNoArray){
     printf("\n---Patient Registration---\n");
 
     printf("1 - Patient Details Collection\n");
@@ -59,11 +58,11 @@ int patient_registration(char name[], int *age, int *triageLevel, int *specialty
         *daysAdmitted = 0;
         *wardID = 0;
     }
-    *waitTime = calculate_estimated_waiting_time(patientCount, specialtyIDs, wardIDs, countPerSpecialty);
-    *surcharge = calculate_emergency_surcharge(*triageLevel, *specialtyID);
-    *wardStayCost = calculate_ward_stay_cost(*wardID, *daysAdmitted);
-    *totalBillValue = calculate_total_bill(baseConsultationFees[*specialtyID - 1], *surcharge, *wardStayCost);
-    *ageSubsidyDiscount = calculate_age_subsidy_discount(*age, *totalBillValue);
+    *waitTime = calculateEstimatedWaitingTime(patientCount, specialtyIDs, wardIDs, countPerSpecialty);
+    *surcharge = calculateEmergencySurcharge(*triageLevel, *specialtyID);
+    *wardStayCost = calculateWardStayCost(*wardID, *daysAdmitted);
+    *totalBillValue = calculateTotalBill(baseConsultationFees[*specialtyID - 1], *surcharge, *wardStayCost);
+    *ageSubsidyDiscount = calculateAgeSubsidyDiscount(*age, *totalBillValue);
     *finalAmountPayable = *totalBillValue - *ageSubsidyDiscount;
     *patientNoArray = patientCount;
     return 0;

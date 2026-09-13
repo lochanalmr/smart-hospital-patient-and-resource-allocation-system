@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include "data_arrays.h"
 #include "patient_registration.h"
 
 #define SIZE 50
@@ -40,7 +38,7 @@ int main(){
         int registrationStatus = 0;
 
         if (choice == 1 && patientCount <= CAPACITY){
-            registrationStatus = patient_registration(
+            registrationStatus = patientRegistration(
                 names[patientCount], 
                 &ages[patientCount], 
                 &triageLevels[patientCount], 
