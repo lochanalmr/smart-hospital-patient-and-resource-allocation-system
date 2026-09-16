@@ -23,6 +23,7 @@ int main(){
     float ageSubsidyDiscounts[CAPACITY] = {0};
     float finalPayableAmounts[CAPACITY] = {0};
     int patientNoArray[CAPACITY] = {0};
+    int bedNumbers[CAPACITY] = {0};
 
     int patientCount = 0;
     int choice = 0;
@@ -39,12 +40,12 @@ int main(){
 
         if (choice == 1 && patientCount <= CAPACITY){
             registrationStatus = patientRegistration(
-                names[patientCount], 
-                &ages[patientCount], 
-                &triageLevels[patientCount], 
-                &specialtyIDs[patientCount], 
-                &admittedStatus[patientCount], 
-                &wardIDs[patientCount], 
+                names[patientCount],
+                &ages[patientCount],
+                &triageLevels[patientCount],
+                &specialtyIDs[patientCount],
+                &admittedStatus[patientCount],
+                &wardIDs[patientCount],
                 &daysAdmitted[patientCount],
                 countPerSpecialty,
                 patientCount,
@@ -57,7 +58,8 @@ int main(){
                 &totalBillValues[patientCount],
                 &ageSubsidyDiscounts[patientCount],
                 &finalPayableAmounts[patientCount],
-                &patientNoArray[patientCount]
+                &patientNoArray[patientCount],
+                &bedNumbers[patientCount]
             );
             if (registrationStatus == 0){
                 printf("Patient %d successfully registered!\n", patientCount);

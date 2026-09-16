@@ -3,7 +3,10 @@
 #include "calculations.h"
 #include "data_arrays.h"
 
-int patientRegistration(char name[], int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID, int *daysAdmitted, int countPerSpecialty[], int patientCount, int specialtyIDs[], int wardIDs[], int *waitTime, float *surcharge, int countPerWardID[], int *wardStayCost, float *totalBillValue, float *ageSubsidyDiscount, float *finalAmountPayable, int *patientNoArray){
+int patientRegistration(char name[], int *age, int *triageLevel, int *specialtyID, int *admitted, int *wardID,
+                        int *daysAdmitted, int countPerSpecialty[], int patientCount, int specialtyIDs[], int wardIDs[],
+                        int *waitTime, float *surcharge, int countPerWardID[], int *wardStayCost, float *totalBillValue,
+                        float *ageSubsidyDiscount, float *finalAmountPayable, int *patientNoArray, int *bedNumber){
     printf("\n---Patient Registration---\n");
 
     printf("1 - Patient Details Collection\n");
@@ -47,6 +50,9 @@ int patientRegistration(char name[], int *age, int *triageLevel, int *specialtyI
             return 1;
         }
         else{
+            int bedIndex = findFreeBed(*wardID, bedOccupancy, totalBedCapacities);
+            bedOccupancy[*wardID - 1][bedIndex] = patientCount + 1;
+            *bedNumber = bedIndex + 1;
             countPerWardID[*wardID - 1] += 1;
             do{
                 printf("Enter days admitted: ");

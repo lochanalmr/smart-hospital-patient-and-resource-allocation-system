@@ -6,5 +6,6 @@ float calculateEmergencySurcharge(int triageLevel, int specialtyID);
 int calculateWardStayCost(int wardID, int daysAdmitted);
 float calculateTotalBill(int baseConsultationFee, float surcharge, int wardStayCost);
 float calculateAgeSubsidyDiscount(int age, int totalBillValue);
+int findFreeBed(int wardID, int bedOccupancy[4][20], int totalBedCapacities[]);
 
 #endif // CALCULATIONS_H_INCLUDED

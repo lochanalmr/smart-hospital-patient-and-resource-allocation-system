@@ -48,3 +48,12 @@ float calculateAgeSubsidyDiscount(int age, int totalBillValue){
     ageSubsidyDiscount = totalBillValue * discountRate;
     return ageSubsidyDiscount;
 }
+
+int findFreeBed(int wardID, int bedOccupancy[4][20], int totalBedCapacities[]){
+    for (int i = 0; i < totalBedCapacities[wardID - 1]; i++){
+        if (bedOccupancy[wardID - 1][i] == 0){
+            return i;
+        }
+    }
+    return 0;
+}
