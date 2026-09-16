@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "patient_registration.h"
+#include "billing.h"
+#include "data_arrays.h"
 
 #define SIZE 50
 #define CAPACITY 1000
@@ -62,13 +64,45 @@ int main(){
                 &bedNumbers[patientCount]
             );
             if (registrationStatus == 0){
-                printf("Patient %d successfully registered!\n", patientCount);
+                printf("Patient %d successfully registered!\n", patientCount + 1);
                 patientCount++;
             }
         }
 
         else if(choice == 2){
-            printf("View Bill of a Patient\n");
+            if (patientCount == 0){
+                printf("No registered patients.\n");
+            }
+            else{
+                int selected = 0;
+                printf("Enter Patient ID to display bill: ");
+                scanf("%d", &selected);
+
+                if (selected < 1 || selected > patientCount){
+                    printf("Invalid patient ID.\n");
+                }
+                else{
+                    int index = selected - 1;
+                    displayPatientBill(
+                        selected,
+                        names[selected - 1],
+                        ages[selected - 1],
+                        triageLevels[selected - 1],
+                        specialtyIDs[selected - 1],
+                        admittedStatus[selected - 1],
+                        wardIDs[selected - 1],
+                        bedNumbers[selected - 1],
+                        daysAdmitted[selected - 1],
+                        baseConsultationFees[specialtyIDs[selected - 1] - 1],
+                        surchargesArray[selected - 1],
+                        wardStayCosts[selected - 1],
+                        totalBillValues[selected - 1],
+                        ageSubsidyDiscounts[selected - 1],
+                        finalPayableAmounts[selected - 1],
+                        waitTimesArray[selected - 1]
+                    );
+                }
+            }
         }
 
         else if(choice == 3){
