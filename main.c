@@ -3,6 +3,7 @@
 #include "billing.h"
 #include "data_arrays.h"
 #include "sorting.h"
+#include "reports.h"
 
 #define SIZE 50
 #define CAPACITY 1000
@@ -37,7 +38,8 @@ int main(){
         printf("1. Register patient\n");
         printf("2. View bill of a patient\n");
         printf("3. View sorted list of patients\n");
-        printf("4. Exit program\n");
+        printf("4. View report and analytics\n");
+        printf("5. Exit program\n");
         printf("Enter choice: ");
         scanf("%d", &choice);
 
@@ -126,6 +128,19 @@ int main(){
         }
 
         else if(choice == 4){
+            generatePerformanceReport(
+                patientCount,
+                triageLevels,
+                totalBillValues,
+                ageSubsidyDiscounts,
+                finalPayableAmounts,
+                countPerWardID,
+                names,
+                patientNoArray
+            );
+        }
+
+        else if(choice == 5){
             printf("\nThank you for using Smart Hospital Patient and Resource Allocation System!\n");
             return 0;
         }
