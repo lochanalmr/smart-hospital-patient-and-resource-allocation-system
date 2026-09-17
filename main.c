@@ -2,6 +2,7 @@
 #include "patient_registration.h"
 #include "billing.h"
 #include "data_arrays.h"
+#include "sorting.h"
 
 #define SIZE 50
 #define CAPACITY 1000
@@ -26,16 +27,18 @@ int main(){
     float finalPayableAmounts[CAPACITY] = {0};
     int patientNoArray[CAPACITY] = {0};
     int bedNumbers[CAPACITY] = {0};
+    int order[CAPACITY] = {0};
 
     int patientCount = 0;
     int choice = 0;
 
     do{
-        printf("\nMain Menu: \n");
-        printf("1. Register Patient\n");
-        printf("2. View Bill of a Patient\n");
-        printf("3: Exit Program\n");
-        printf("Enter Choice: ");
+        printf("\nMain menu: \n");
+        printf("1. Register patient\n");
+        printf("2. View bill of a patient\n");
+        printf("3. View sorted list of patients\n");
+        printf("4. Exit program\n");
+        printf("Enter choice: ");
         scanf("%d", &choice);
 
         int registrationStatus = 0;
@@ -106,6 +109,23 @@ int main(){
         }
 
         else if(choice == 3){
+            sortPatientsByPriority(patientCount, triageLevels, order);
+            displayPatientsByPriority(
+                patientCount,
+                order,
+                patientNoArray,
+                names,
+                ages,
+                triageLevels,
+                specialtyIDs,
+                admittedStatus,
+                wardIDs,
+                bedNumbers,
+                waitTimesArray
+            );
+        }
+
+        else if(choice == 4){
             printf("\nThank you for using Smart Hospital Patient and Resource Allocation System!\n");
             return 0;
         }
