@@ -42,7 +42,7 @@ float calculateTotalBill(int baseConsultationFee, float surcharge, int wardStayC
 float calculateAgeSubsidyDiscount(int age, float totalBillValue){
     float ageSubsidyDiscount = 0;
     float discountRate = 0;
-    if (age < 0 || age > 65){
+    if (age < 5 || age > 65){
         discountRate = 0.15;
     }
     ageSubsidyDiscount = totalBillValue * discountRate;

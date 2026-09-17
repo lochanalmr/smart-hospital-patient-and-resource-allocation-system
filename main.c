@@ -87,7 +87,6 @@ int main(){
                     printf("Invalid patient ID.\n");
                 }
                 else{
-                    int index = selected - 1;
                     displayPatientBill(
                         selected,
                         names[selected - 1],

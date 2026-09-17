@@ -48,7 +48,7 @@ void displayPatientsByPriority(int patientCount, int order[], int patientNoArray
         int p = order[rank];
 
         if (admittedStatus[p] == 1){
-            printf("%-4d        PAT-%04d   %-15s %-5d %-20s %-20s  W%d-B%02d   %-10d\n", rank + 1, patientNoArray[p] + 1, names[p], ages[p],
+            printf("%-4d        PAT-%04d   %-15s %-5d %-20s %-20s    W%d-B%02d   %-10d\n", rank + 1, patientNoArray[p] + 1, names[p], ages[p],
                    triageLevelText(triageLevels[p]), specialtyNames[specialtyIDs[p] - 1],
                    wardIDs[p], bedNumbers[p], waitTimesArray[p]);
         }

@@ -15,7 +15,7 @@ int patientRegistration(char name[], int *age, int *triageLevel, int *specialtyI
     do{
         printf("Enter patient age: ");
         scanf("%d", age);
-    }while(age <= 0);
+    }while(*age <= 0);
     do{
         printf("Emergency triage level (1 = Normal, 2 = Urgent, 3 = Critical): ");
         scanf("%d", triageLevel);
@@ -46,7 +46,7 @@ int patientRegistration(char name[], int *age, int *triageLevel, int *specialtyI
             scanf("%d", wardID);
         }while(*wardID <= 0 || *wardID >= 5);
         if (countPerWardID[*wardID - 1] == totalBedCapacities[*wardID - 1]){
-            printf("Selected ward reached maximum capacity. Unable to register patient!\n", *wardID + 1);
+            printf("Selected ward reached maximum capacity. Unable to register patient!\n");
             return 1;
         }
         else{

@@ -43,10 +43,10 @@ void generatePerformanceReport(int patientCount, int triageLevels[], float total
     printf("Total Discounts Granted   : LKR %10.2f\n", totalDiscountsGranted);
 
     printf("\n3. Bed Occupancy Percentage Per Ward\n");
-    for (int w = 0; w < 4; w++){
-        float occupancyPercent = ((float)countPerWardID[w] / (float)totalBedCapacities[w]) * 100.0;
+    for (int i = 0; i < 4; i++){
+        float occupancyPercent = ((float)countPerWardID[i] / (float)totalBedCapacities[i]) * 100.0;
         printf("%-26s: %6.2f%%  (%d/%d beds occupied)\n",
-            wardNames[w], occupancyPercent, countPerWardID[w], totalBedCapacities[w]);
+            wardNames[i], occupancyPercent, countPerWardID[i], totalBedCapacities[i]);
     }
 
     printf("\n4. Highest-Paying Patient\n");

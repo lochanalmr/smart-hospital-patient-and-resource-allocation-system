@@ -30,7 +30,7 @@ void displayPatientBill(int patientNo, char name[], int age, int triageLevel,
     float totalBillValue, float ageSubsidyDiscount,
     float finalAmountPayable, int waitTime){
 
-    int subsidyEligible = (age < 0 || age > 65);
+    int subsidyEligible = (age < 5 || age > 65);
 
     printf("=====================================================\n");
     printf("        SMART HOSPITAL ADMISSION & BILL\n");
