@@ -21,7 +21,7 @@ int main(){
     int countPerSpecialty[4] = {0};
     int waitTimesArray[CAPACITY] = {0};
     float surchargesArray[CAPACITY] = {0.0};
-    int countPerWardID[CAPACITY] = {0};
+    int countPerWardID[4] = {0};
     int wardStayCosts[CAPACITY] = {0};
     float totalBillValues[CAPACITY] = {0};
     float ageSubsidyDiscounts[CAPACITY] = {0};
@@ -45,7 +45,7 @@ int main(){
 
         int registrationStatus = 0;
 
-        if (choice == 1 && patientCount <= CAPACITY){
+        if (choice == 1 && patientCount < CAPACITY){
             registrationStatus = patientRegistration(
                 names[patientCount],
                 &ages[patientCount],
@@ -143,6 +143,7 @@ int main(){
             printf("\nThank you for using Smart Hospital Patient and Resource Allocation System!\n");
             return 0;
         }
+
     } while (choice != 0);
 
     return 0;

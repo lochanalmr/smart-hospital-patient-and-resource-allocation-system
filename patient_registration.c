@@ -10,8 +10,10 @@ int patientRegistration(char name[], int *age, int *triageLevel, int *specialtyI
     printf("\n---Patient Registration---\n");
 
     printf("1 - Patient Details Collection\n");
-    printf("Enter patient name: ");
-    scanf("%s", name);
+    do {
+        printf("Enter patient name: ");
+        scanf(" %49[^\n]", name);
+    } while (strlen(name) == 0);
     do{
         printf("Enter patient age: ");
         scanf("%d", age);
