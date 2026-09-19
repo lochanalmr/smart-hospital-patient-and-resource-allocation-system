@@ -4,9 +4,10 @@
 #include "data_arrays.h"
 #include "sorting.h"
 #include "reports.h"
+#include "file_handling.h"
 
 #define SIZE 50
-#define CAPACITY 1000
+#define CAPACITY 73
 
 int main(){
     printf("Smart Hospital Patient and Resource Allocation System\n");
@@ -32,6 +33,9 @@ int main(){
 
     int patientCount = 0;
     int choice = 0;
+
+    if (loadBedOccupancy(bedOccupancy, countPerWardID) != 0)
+        printf("Cannot load saved bed status\n");
 
     do{
         printf("\nMain menu: \n");
@@ -69,6 +73,15 @@ int main(){
                 &bedNumbers[patientCount]
             );
             if (registrationStatus == 0){
+                if (addPatientRecord(
+                        patientCount + 1,
+                        names[patientCount],
+                        ages[patientCount],
+                        totalBillValues[patientCount],
+                        ageSubsidyDiscounts[patientCount],
+                        finalPayableAmounts[patientCount]) != 0){
+                    printf("Cannot save record of this patient\n");
+                }
                 printf("Patient %d successfully registered!\n", patientCount + 1);
                 patientCount++;
             }
@@ -140,6 +153,8 @@ int main(){
         }
 
         else if(choice == 5){
+            if (saveBedOccupancy(bedOccupancy) != 0)
+                printf("Cannot save bed status\n");
             printf("\nThank you for using Smart Hospital Patient and Resource Allocation System!\n");
             return 0;
         }

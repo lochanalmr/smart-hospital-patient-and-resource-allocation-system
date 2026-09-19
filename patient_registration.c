@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "patient_registration.h"
 #include "calculations.h"
 #include "data_arrays.h"
