@@ -29,6 +29,9 @@ float calculateEmergencySurcharge(int triageLevel, int specialtyID){
 
 int calculateWardStayCost(int wardID, int daysAdmitted){
     int totalWardStayCost = 0;
+    if (wardID == 0){
+        return 0;
+    }
     totalWardStayCost = daysAdmitted * dailyBedRates[wardID - 1];
     return totalWardStayCost;
 }

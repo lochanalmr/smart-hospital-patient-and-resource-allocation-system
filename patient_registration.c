@@ -50,6 +50,7 @@ int patientRegistration(char name[], int *age, int *triageLevel, int *specialtyI
         }while(*wardID <= 0 || *wardID >= 5);
         if (countPerWardID[*wardID - 1] == totalBedCapacities[*wardID - 1]){
             printf("Selected ward reached maximum capacity. Unable to register patient!\n");
+            countPerSpecialty[*specialtyID - 1] -= 1;
             return 1;
         }
         else{
