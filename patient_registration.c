@@ -47,22 +47,23 @@ int patientRegistration(char name[], int *age, int *triageLevel, int *specialtyI
         do{
             printf("Enter ward ID (1 to 4): ");
             scanf("%d", wardID);
-        }while(*wardID <= 0 || *wardID >= 5);
-        if (countPerWardID[*wardID - 1] == totalBedCapacities[*wardID - 1]){
-            printf("Selected ward reached maximum capacity. Unable to register patient!\n");
-            countPerSpecialty[*specialtyID - 1] -= 1;
+        }while (*wardID < 1 || *wardID > 4);
+
+        int bedIndex = findFreeBed(*wardID, bedOccupancy, totalBedCapacities);
+
+        if (bedIndex == -1) {
+            printf("No unoccupied beds available in the selected ward, so unable to register patient\n");
             return 1;
         }
-        else{
-            int bedIndex = findFreeBed(*wardID, bedOccupancy, totalBedCapacities);
-            bedOccupancy[*wardID - 1][bedIndex] = patientCount + 1;
-            *bedNumber = bedIndex + 1;
-            countPerWardID[*wardID - 1] += 1;
-            do{
-                printf("Enter days admitted: ");
-                scanf("%d", daysAdmitted);
-            }while (*daysAdmitted <= 0);
-        }
+
+        bedOccupancy[*wardID - 1][bedIndex] = patientCount + 1;
+        *bedNumber = bedIndex + 1;
+        countPerWardID[*wardID - 1]++;
+
+        do {
+            printf("Enter days admitted: ");
+            scanf("%d", daysAdmitted);
+        } while (*daysAdmitted <= 0);
     }
     else if(*admitted == 0){
         *daysAdmitted = 0;

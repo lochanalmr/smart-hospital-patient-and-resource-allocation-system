@@ -52,11 +52,11 @@ float calculateAgeSubsidyDiscount(int age, float totalBillValue){
     return ageSubsidyDiscount;
 }
 
-int findFreeBed(int wardID, int bedOccupancy[4][20], int totalBedCapacities[]){
+int findFreeBed(int wardID, int bedOccupancy[4][20], const int totalBedCapacities[]){
     for (int i = 0; i < totalBedCapacities[wardID - 1]; i++){
         if (bedOccupancy[wardID - 1][i] == 0){
             return i;
         }
     }
-    return 0;
+    return -1;
 }
